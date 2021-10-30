@@ -1,5 +1,5 @@
-# dict = {"nome":"Cláudio",
-#         "sobrenome":"Cesar Prates Junior",
+# dict = {"nome":"Cláudio Cesar",
+#         "sobrenome":"Prates Junior",
 #         "idade":36}
 # for keys in dict.keys():
 #     print (keys)
