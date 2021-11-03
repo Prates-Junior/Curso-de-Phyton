@@ -3,23 +3,23 @@ import random
 opção = input("Deseja continuar de onde parou? [S]im / [N]ão:")
 
 if opção == "S":
-    fd = open("salvar.db","r")
-    dados = fd.close()
-    dados = dados.split("|")
-    dados = dados[0]
-    tries = dados[1]
-    fd.close()
+
+    with open("salvar.db","r") as fd:
+        dados = fd.read()
+        dados = dados.split("|")
+        rand= int(dados[0])
+        tries = int(dados[1])
+
 else:
     rand = random.randint(1,1000)
     tries = 0
 
 while True:
         user_guess = (input("Qual eh o numero? [S]alvar "))
-
-        fd = open("salvar.db","w")
-        fd.write(f"{rand}|{tries}")
-        fd.close()
-        exit(0)
+        if user_guess == "S":
+           with open("salvar.db","w") as fd:
+            fd.write(f"{rand}|{tries}")
+            exit(0)
 
         user_guess = int(user_guess)
 
